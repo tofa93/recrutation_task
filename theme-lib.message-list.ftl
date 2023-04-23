@@ -9,9 +9,18 @@
 
 <#-- page size -->
 <#-- Here we are setting up page size to exactly 30 -->
-<#-- making sure the the page is 30 posts per page -->
+<#-- making sure the the page is set to 30 posts per page -->
+
 <#assign pageSize = 30 />
-<#--  Removing the previous code as it not nessary anymore  -->
+
+<#--  <#if user.registered>
+    <#assign pageSizeUser = settings.name.get("layout.messages_per_page_linear") />
+    <#if pageSizeUser?number != pageSize?number>
+        <#assign pageSize = pageSizeUser />
+    </#if>
+  </#if>   -->
+  
+<#--  Commenting out the previous code as it not nessary anymore  -->
 <#--  since we are setting the page size to always be 30 posts per page  -->
  
 <#if webuisupport.path.parameters.name.get("label-name")??>
