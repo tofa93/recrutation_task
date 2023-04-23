@@ -915,11 +915,11 @@
           <p><b>Hundreds</b><br> of companies</p>
         </div>
       </div>
-      <!-- Adding a div with the bootstrap 3.4 buton with the custom class -->
+      <!-- Adding a div with the bootstrap 3.4 button with the custom class -->
       <div class="google-maps">
         <!-- in order to customize the background color and text color -->
         <!-- Adding target: "_blank" attribute in order to prevent redirection from the main page to the google maps-->
-        <a href="https://www.google.com/maps" target="_blank" class="btn btn-lg gm-btn" role="button">Google maps</a>
+        <button class="btn btn-lg gm-btn" onclick="mapLink()" role="button">Google maps</button>
       </div>
     </div>
   </div>
@@ -1184,6 +1184,13 @@
     </div>
   </div>
 
+
+  <script>
+
+    function mapLink() {
+      window.location.href = 'https://www.google.com/maps';
+    }
+  </script>
 </body>
 
 </html>
