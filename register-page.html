@@ -220,26 +220,32 @@
     }
 
 
-    /* Adding custom css styles to the bottstrap 3.4 link */
     /* Adding background color using eye drop firefox tool in order to get exact violet color */
     /* Changing text color to bright */
     /* Transition property to make it look smoother when hovering out */
     .gm-btn {
+      padding: 1rem;
+      font-size: 16px;
+      font-weight: 500;
       background: #773AB1;
       color: #fff;
+      border-radius: 5px;
       transition: 200ms ease-in-out;
+      text-decoration: none;
+      cursor: pointer;
     }
 
-    /* Adding custom css hover, focus, active effects to the bottstrap 3.4 link */
+    /* Adding css hover, focus, active properties */
     /* Keeping the text color as previous by forcing the color property stays the same */
     /* Adding transition property to make it look smother when hovering over */
     .gm-btn:hover,
     .gm-btn:focus,
     .gm-btn:active,
     .gm-btn.active {
-      color: #fff !important;
+      color: #fff;
       background-color: #540d6e;
       transition: 200ms ease-in-out;
+      text-decoration: none;
     }
 
 
@@ -767,6 +773,23 @@
   <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet preconnect">
 
+  <script>
+    window.addEventListener('load', (event) => {
+      let mapContent = document.getElementById('mapContent');
+      let linkDiv = document.createElement('div');
+      let googleLink = document.createElement('a');
+
+      linkDiv.classList.add('google-maps');
+      googleLink.classList.add('gm-btn');
+      googleLink.href = 'https://www.google.com/maps';
+
+      googleLink.innerText = 'Google Maps';
+      linkDiv.append(googleLink);
+      mapContent.append(linkDiv);
+
+    });
+  </script>
+
 </head>
 
 <body>
@@ -895,7 +918,7 @@
   </div>
 
   <div class="map-wrapper">
-    <div class="map-content">
+    <div class="map-content" id="mapContent">
       <div class="map-content-title">
         <div class="map-content-title-light">
           <p>Become a part of <b>global community</b></p>
@@ -914,12 +937,6 @@
         <div class="map-content-text-1">
           <p><b>Hundreds</b><br> of companies</p>
         </div>
-      </div>
-      <!-- Adding a div with the bootstrap 3.4 button with the custom class -->
-      <div class="google-maps">
-        <!-- in order to customize the background color and text color -->
-        <!-- Adding target: "_blank" attribute in order to prevent redirection from the main page to the google maps-->
-        <button class="btn btn-lg gm-btn" onclick="mapLink()" role="button">Google maps</button>
       </div>
     </div>
   </div>
@@ -1183,14 +1200,6 @@
       </div>
     </div>
   </div>
-
-
-  <script>
-
-    function mapLink() {
-      window.location.href = 'https://www.google.com/maps';
-    }
-  </script>
 </body>
 
 </html>
