@@ -774,19 +774,27 @@
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet preconnect">
 
   <script>
-    window.addEventListener('load', (event) => {
-      let mapContent = document.getElementById('mapContent');
+    // Dynamicaly creating div and link to the Google Maps
+    // Selecting map content div by using Query Selector
+    function googleBtnLoad() {
+      let mapContent = document.querySelector('.map-content');
       let linkDiv = document.createElement('div');
       let googleLink = document.createElement('a');
 
       linkDiv.classList.add('google-maps');
       googleLink.classList.add('gm-btn');
       googleLink.href = 'https://www.google.com/maps';
-
+      // Adding _blank in order to prevent user to redirect from the main page to the Google Maps
+      googleLink.target = "_blank";
       googleLink.innerText = 'Google Maps';
+
+      // Appending button to the custom div and then to the map content div
       linkDiv.append(googleLink);
       mapContent.append(linkDiv);
-
+    }
+    // Invoking the function on page load that creates the div with the button inside of it
+    window.addEventListener('load', (event) => {
+      googleBtnLoad();
     });
   </script>
 
@@ -918,7 +926,7 @@
   </div>
 
   <div class="map-wrapper">
-    <div class="map-content" id="mapContent">
+    <div class="map-content">
       <div class="map-content-title">
         <div class="map-content-title-light">
           <p>Become a part of <b>global community</b></p>
