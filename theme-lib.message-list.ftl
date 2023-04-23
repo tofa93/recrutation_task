@@ -11,12 +11,8 @@
 <#-- Here we are setting up page size to exactly 30 -->
 <#-- making sure the the page is 30 posts per page -->
 <#assign pageSize = 30 />
-<#if user.registered>
-   <#assign pageSizeUser = settings.name.get("layout.messages_per_page_linear") />
-   <#if pageSizeUser?number != pageSize?number>
-       <#assign pageSize = pageSizeUser />
-   </#if>
-</#if>
+<#--  Removing the previous code as it not nessary anymore  -->
+<#--  since we are setting the page size to always be 30 posts per page  -->
  
 <#if webuisupport.path.parameters.name.get("label-name")??>
    <#assign label = webuisupport.path.parameters.name.get("label-name").getText() />
@@ -38,14 +34,22 @@
 <#assign whereClause = label_query />
  
 <#switch sorting>
-   <#case "kudos">
-       <#assign orderClause = "ORDER BY kudos.sum(weight) DESC " />
+<#--  Sorting by the post_time in descending order  -->
+   <#case "post_time">
+       <#assign orderClause = "ORDER BY post_time DESC " />
    <#break>
-   <#case "views">
-       <#assign orderClause = "ORDER BY metrics.views DESC " />
+   <#--  Sorting by the kudos number in ascending order  -->
+   <#case "less_kudos">
+       <#assign orderClause = "ORDER BY kudos.sum(weight) ASC " />
    <#break>
-   <#case "replies">
-       <#assign orderClause = "ORDER BY replies.count(*) DESC " />
+   <#--  Sorting by the answers in ascending order  -->
+   <#case "not_replied">
+       <#assign orderClause = "ORDER BY replies.count(*) ASC " />
+   <#break>
+   <#-- This will return only the not solved messages in descending staring from the newest post in the message to the oldest -->
+   <#case "not_solved">
+       <#assign whereClause = whereClause + " AND conversation.solved = false " />
+       <#assign orderClause = "ORDER BY conversation.last_post_time DESC " />
    <#break>
    <#default>
        <#assign orderClause = "ORDER BY conversation.last_post_time DESC " />
