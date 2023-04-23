@@ -6,8 +6,11 @@
 <#assign showPaging = "true" />
 <#assign sorting = http.request.parameters.name.get("sort", "") />
  
+
 <#-- page size -->
-<#assign pageSize = coreNode.settings.name.get("layout.messages_per_page_linear", "10")?number />
+<#-- Here we are setting up page size to exactly 30 -->
+<#-- making sure the the page is 30 posts per page -->
+<#assign pageSize = 30 />
 <#if user.registered>
    <#assign pageSizeUser = settings.name.get("layout.messages_per_page_linear") />
    <#if pageSizeUser?number != pageSize?number>
@@ -149,8 +152,8 @@
        <#assign msg_status_txt = "theme-lib.general.thread-floated" />
    </#if>
    <#if msg.conversation.solved>
-       <#assign solved = "custom-thread-solved" />
-       <#assign msg_status_icon = "custom-thread-solved" />
+       <#assign solved = "thread-custom" />
+       <#assign msg_status_icon = "thread-custom" />
        <#assign msg_status_txt = "theme-lib.general.thread-solved" />
    </#if>
    <#if !msg.user_context.read>
