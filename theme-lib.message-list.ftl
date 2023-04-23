@@ -83,6 +83,12 @@
                    <option value="views" <#if sorting == 'views'>selected</#if>>${text.format("theme-lib.community-activity.views")}</option>
                    <option value="replies" <#if sorting == 'replies'>selected</#if>>${text.format("theme-lib.community-activity.replies")}</option>
                    <option value="kudos" <#if sorting == 'kudos'>selected</#if>>${text.format("theme-lib.community-activity.kudos")}</option>
+
+                   <#-- Adding new option to the select menu list for sorting methods -->
+                   <option value="post_time" <#if sorting == 'post_time'>selected</#if>>${text.format("theme-lib.community-activity.post_time")}</option>
+                   <option value="less_kudos" <#if sorting == 'less_kudos'>selected</#if>>${text.format("theme-lib.community-activity.less_kudos")}</option>
+                   <option value="not_replied" <#if sorting == 'not_replied'>selected</#if>>${text.format("theme-lib.community-activity.not_replied")}</option>
+                   <option value="not_solved" <#if sorting == 'not_solved'>selected</#if>>${text.format("theme-lib.community-activity.not_solved")}</option>
                </select>
                <#if page.interactionStyle=="idea">
                  <@component id="custom.idea.status.label" />
@@ -156,6 +162,8 @@
        <#assign msg_status_txt = "theme-lib.general.thread-floated" />
    </#if>
    <#if msg.conversation.solved>
+   <#--  Changing the previous 'custom-thread-solved' to 'thread-custom'  -->
+   <#--  Whenever the conversation will be solved, new classes will be assigned  -->
        <#assign solved = "thread-custom" />
        <#assign msg_status_icon = "thread-custom" />
        <#assign msg_status_txt = "theme-lib.general.thread-solved" />
